@@ -74,7 +74,6 @@ imprimirEnHtml(carritoProductos);
 
 }
 
-
 //**** OBJECT CONSTRUCTOR ****//
 class Carrito {
     constructor(titulo, codigo, precio, cantidad) { // Recibe los datos ingresados por prompts.
