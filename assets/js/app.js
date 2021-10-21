@@ -1,13 +1,12 @@
 //**** DESCRIPCIÓN DE ENTREGA ****/
-//** En este desafio #8 sobre la base del desafio anterior, sume la integracion con el HTML. Se muestra en modo tabla los items ingresados en el localStorage. A su vez agregue 2 botones mas: uno modifica un item */
-//** seleccionado por el usuario por el campo que elija, el otro boton es para limpiar los datos almacenados en el localStorage. También como parte de la manipulación del DOM, agregue 3 botones para modificar el formato  */
-//** y estilo del texto exibido en la tabla. */
+//** En esta primer entrega del proyecto final arme un carrito de compras para una tienda de video juegos, defini la estructura principal y interactue la mayor parte del codigo mediante el HTML. Coloque a modo de prueba 4 productos */
+//** los cuales se cargan como objetos dentro de un array que actua como carrito y se guarda en el localstorage  */
 
 //**** DECLARACION DE VARIABLES GLOBALES ****/
 
 let confirmacion0 = true; // Confirmacion de Borrado Item. Inicialización.
 let cantidad= 0; // Variable para contabilizar la cantidad del mismo item en el carrito .
-let codigo = 0; // Inicializo el identificador del item, el cual se incrementara con la creacion de cada objeto.
+let codigo = 0; // Inicializo el identificador del item, el cual se incrementara con la creacion de cada objeto(futuro: proxima entrega).
 let codigoBorrar = 0; // Variable que almacena el numero de item a borrar ingresado por el usuario. Inicialización.
 let carritoProductos = JSON.parse(localStorage.getItem('carritoProductos')) || []; // Array que almacena los items ingresados por el usuario a modo de objetos. Se realiza lectura del array almacenado en localStorage.
 let printHtml = document.getElementById('printHtml');// Referencia variable al cuadro de productos ingresados en el DOM.
@@ -36,36 +35,36 @@ const imprimirEnHtml = (item) => {
     }
 }
 
-const filtroPorTitulo = (titulo )=> carritoProductos.filter(producto => producto.titulo === titulo);
+const filtroPorTitulo = (titulo )=> carritoProductos.filter(producto => producto.titulo === titulo); //Filtro de titulo para contabilizar cuantas veces el producto se ingreso al carrito.
 
 imprimirEnHtml(carritoProductos); // Se imprime en el cuerpo de la tabla HTML los datos guardados en el localStorage.
 
-btnCarro1.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML.
-cantidad = ((filtroPorTitulo('Battlefield 2042')).length) + 1;
+btnCarro1.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML (agregar a carrito).
+cantidad = ((filtroPorTitulo('Battlefield 2042')).length) + 1; // Se obtiene la cantidad del producto en el carrito.
 const item1 = new Carrito('Battlefield 2042', 1, 2800, cantidad); // Nuevo objeto creado.
-ingresoCarrito(item1);
+ingresoCarrito(item1); // Se ingresa el item al carrito
 //             
 }); // Cierre alcance ejecución boton de ingreso de item en el HTML.
-btnCarro2.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML.
-cantidad = ((filtroPorTitulo('Blue Protocol')).length) + 1;
+btnCarro2.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML (agregar a carrito).
+cantidad = ((filtroPorTitulo('Blue Protocol')).length) + 1; // Se obtiene la cantidad del producto en el carrito.
 const item2 = new Carrito('Blue Protocol', 2, 2000, cantidad); // Nuevo objeto creado.
-ingresoCarrito(item2);
+ingresoCarrito(item2); // Se ingresa el item al carrito
 //             
 }); // Cierre alcance ejecución boton de ingreso de item en el HTML.
-btnCarro3.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML.
-cantidad = ((filtroPorTitulo('Halo Infinite')).length) + 1;
+btnCarro3.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML (agregar a carrito).
+cantidad = ((filtroPorTitulo('Halo Infinite')).length) + 1; // Se obtiene la cantidad del producto en el carrito.
 const item3 = new Carrito('Halo Infinite', 3, 2500, cantidad); // Nuevo objeto creado.
-ingresoCarrito(item3);
+ingresoCarrito(item3); // Se ingresa el item al carrito
 //             
 }); // Cierre alcance ejecución boton de ingreso de item en el HTML.
-btnCarro4.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML.
-cantidad = ((filtroPorTitulo('Elden Ring')).length) + 1;
+btnCarro4.addEventListener("click", () => { // Llamado ingreso de items mediante click del boton en el HTML (agregar a carrito).
+cantidad = ((filtroPorTitulo('Elden Ring')).length) + 1; // Se obtiene la cantidad del producto en el carrito.
 const item4 = new Carrito('Elden Ring', 4, 3000, cantidad); // Nuevo objeto creado.
-ingresoCarrito(item4);
+ingresoCarrito(item4); // Se ingresa el item al carrito
 //             
 }); // Cierre alcance ejecución boton de ingreso de item en el HTML.
 
-const ingresoCarrito = (item) => {
+const ingresoCarrito = (item) => { // Funcion de ingreso de item al carrito.
 carritoProductos.push(item);
 localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos)); // Se almacena en el localStorage el nuevo objeto-item creado.
 
